@@ -12,11 +12,9 @@ A lightweight end-to-end machine learning demo that predicts the species of Palm
 - [Usage](#usage)  
   - [Data Preprocessing](#data-preprocessing)  
   - [Model Training & Evaluation](#model-training--evaluation)  
-  - [Streamlit App](#streamlit-app)  
-- [Deployment](#deployment)  
+  - [Streamlit App](#streamlit-app)    
 - [Results](#results)  
-- [Future Work](#future-work)  
-- [License](#license)  
+  
 
 ---
 
@@ -97,3 +95,44 @@ df_clean = (
     .pipe(pd.get_dummies, columns=["island"], drop_first=True)
 )
 
+## Results
+
+After training and evaluating both models on the hold-out test set (20 % of the data), we obtained the following detailed insights:
+
+### 1. Overall Accuracy  
+- **Logistic Regression:** 0.97  
+- **Decision Tree:** 0.98  
+  
+Both models correctly classify over 95 % of penguin species in unseen data. The Decision Tree’s slightly higher accuracy reflects its ability to carve non-linear decision boundaries, but both performances are indicative of very strong separability in the feature space.
+
+### 2. Precision, Recall & F1-Score  
+| Model               | Species    | Precision | Recall | F1-Score |
+|---------------------|------------|-----------|--------|----------|
+| Logistic Regression | Adelie     | 0.98      | 0.96   | 0.97     |
+|                     | Chinstrap  | 0.95      | 0.97   | 0.96     |
+|                     | Gentoo     | 0.98      | 0.99   | 0.99     |
+| Decision Tree       | Adelie     | 0.99      | 0.97   | 0.98     |
+|                     | Chinstrap  | 0.97      | 0.98   | 0.97     |
+|                     | Gentoo     | 0.99      | 1.00   | 0.99     |
+
+- **Precision** measures how many of the penguins predicted as a given species were correct.  
+- **Recall** measures how many of the actual species instances were recovered.  
+- **F1-Score** balances the two, and values above 0.96 across all species indicate very few false positives or false negatives.
+
+### 3. Confusion Matrix Analysis  
+```text
+Logistic Regression Confusion Matrix
+            Predicted
+Actual       Adelie  Chinstrap  Gentoo
+--------------------------------------
+Adelie         56         2        0
+Chinstrap       1        35        1
+Gentoo          0         0       50
+
+Decision Tree Confusion Matrix
+            Predicted
+Actual       Adelie  Chinstrap  Gentoo
+--------------------------------------
+Adelie         57         1        0
+Chinstrap       1        35        1
+Gentoo          0         0       50
