@@ -1,6 +1,6 @@
 # Penguin Species Classifier
 
-A lightweight end-to-end machine learning demo that predicts the species of Palmer Archipelago penguins based on simple biometric measurements. It covers the full supervised learning workflow, data loading & cleaning, feature encoding, train/test splitting, model training (Logistic Regression & Decision Tree), and performance evaluation—plus an interactive Streamlit app for real-time prediction.
+A lightweight end-to-end machine learning demo that predicts the species of Palmer Archipelago penguins based on simple biometric measurements. It covers the full supervised learning workflow, data loading & cleaning, feature encoding, train/test splitting, model training (Logistic Regression & Decision Tree), and performance evaluation, plus an interactive Streamlit app for real-time prediction (in process of creating)
 
 ---
 
