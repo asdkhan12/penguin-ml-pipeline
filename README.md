@@ -80,3 +80,20 @@ df_clean = (
 
 python train.py
 
+## Usage
+
+### Data Preprocessing
+```python
+import pandas as pd
+
+# Load and clean the data
+df = pd.read_csv("penguins_size.csv")
+df_clean = (
+    df
+    .dropna()  # remove any rows with missing values
+    .assign(
+        sex=lambda d: d["sex"].str.upper().map({"MALE":1,"FEMALE":0})
+    )
+    .pipe(pd.get_dummies, columns=["island"], drop_first=True)
+)
+
