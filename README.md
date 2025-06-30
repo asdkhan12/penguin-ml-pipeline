@@ -12,7 +12,6 @@ A lightweight end-to-end machine learning demo that predicts the species of Palm
 - [Usage](#usage)  
   - [Data Preprocessing](#data-preprocessing)  
   - [Model Training & Evaluation](#model-training--evaluation)  
-  - [Streamlit App](#streamlit-app)    
 - [Results](#results)  
   
 
@@ -136,3 +135,22 @@ Actual       Adelie  Chinstrap  Gentoo
 Adelie         57         1        0
 Chinstrap       1        35        1
 Gentoo          0         0       50
+
+
+## Model Training & Evaluation
+
+### 1. Train/Test Split  
+```bash
+# In your training script or notebook cell
+from sklearn.model_selection import train_test_split
+
+# Features and target
+X = df_clean.drop("species", axis=1)
+y = df_clean["species"]
+
+# 80/20 split with a fixed random state for reproducibility
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y,
+    test_size=0.20,
+    random_state=42
+)
